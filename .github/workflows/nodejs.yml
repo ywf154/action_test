@@ -22,4 +22,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm i
     - run: npm run build --if-present
-  
+
+
+    - name:  run the tests and generate coverage report
+      run: npm test --coverage
+
+    - name: Archive code coverage resuilts
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-coverage-report
+        path: coverage/
